@@ -17,7 +17,7 @@ import (
 func Example() {
 
 	// HEXADECIMAL
-	h := 64
+	h := "64"
 	fmt.Println(hexadecimal.Hexadecimal2Ascii(h))
 	fmt.Println(hexadecimal.Hexadecimal2Binary(h))
 	fmt.Println(hexadecimal.Hexadecimal2Octal(h))

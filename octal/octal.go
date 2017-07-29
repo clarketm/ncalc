@@ -14,39 +14,36 @@ import (
 	"github.com/clarketm/ncalc/utils"
 )
 
-// Octal2Ascii (n int) string
-func Octal2Ascii(n int) string {
-	s := strconv.Itoa(n)
+// Octal2Ascii (s string) string
+func Octal2Ascii(s string) string {
 	return fmt.Sprintf("%q", ValueOf(s))
 }
 
-// Octal2Binary (n int) int
-func Octal2Binary(n int) string {
-	s := strconv.Itoa(n)
+// Octal2Binary (s string) string
+func Octal2Binary(s string) string {
 	i, err := strconv.ParseInt(s, utils.OCTAL_BASE, 0)
 	utils.CheckError(err, utils.OCTAL, utils.BINARY)
-	return decimal.Decimal2Binary(int(i))
+	s = strconv.Itoa(int(i))
+	return decimal.Decimal2Binary(s)
 }
 
-// Octal2Decimal (n int) string
-func Octal2Decimal(n int) string {
-	s := strconv.Itoa(n)
+// Octal2Decimal (s string) string
+func Octal2Decimal(s string) string {
 	i, err := strconv.ParseInt(s, utils.OCTAL_BASE, 0)
 	utils.CheckError(err, utils.OCTAL, utils.DECIMAL)
 	return strconv.Itoa(int(i))
 }
 
-// Octal2Hexadecimal (n int) string
-func Octal2Hexadecimal(n int) string {
-	s := strconv.Itoa(n)
+// Octal2Hexadecimal (s string) string
+func Octal2Hexadecimal(s string) string {
 	i, err := strconv.ParseInt(s, utils.OCTAL_BASE, 0)
 	utils.CheckError(err, utils.OCTAL, utils.HEXADECIMAL)
-	return decimal.Decimal2Hexadecimal(int(i))
+	s = strconv.Itoa(int(i))
+	return decimal.Decimal2Hexadecimal(s)
 }
 
-// String (n int) string
-func String(n int) string {
-	s := strconv.Itoa(n)
+// String (s string) string
+func String(s string) string {
 	return fmt.Sprintf("%o", ValueOf(s))
 }
 

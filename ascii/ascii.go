@@ -8,33 +8,44 @@ package ascii
 
 import (
 	"fmt"
+	"strconv"
 
 	"github.com/clarketm/ncalc/decimal"
 )
 
-// Ascii2Binary (s rune) string
-func Ascii2Binary(n rune) string {
-	return decimal.Decimal2Binary(int(n))
+// Ascii2Binary (s string) string
+func Ascii2Binary(s string) string {
+	s = strconv.Itoa(ValueOf(s))
+	return decimal.Decimal2Binary(s)
 }
 
-// Ascii2Octal (s rune) string
-func Ascii2Octal(n rune) string {
-	return decimal.Decimal2Octal(int(n))
+// Ascii2Octal (s string) string
+func Ascii2Octal(s string) string {
+	s = strconv.Itoa(ValueOf(s))
+	return decimal.Decimal2Octal(s)
 }
 
-// Ascii2Decimal (c rune) string
-func Ascii2Decimal(n rune) string {
-	return decimal.String(int(n))
+// Ascii2Decimal (s string) string
+func Ascii2Decimal(s string) string {
+	s = strconv.Itoa(ValueOf(s))
+	return decimal.String(s)
 }
 
-// Ascii2Hexadecimal (c rune) string
-func Ascii2Hexadecimal(n rune) string {
-	return decimal.Decimal2Hexadecimal(int(n))
+// Ascii2Hexadecimal (s string) string
+func Ascii2Hexadecimal(s string) string {
+	s = strconv.Itoa(ValueOf(s))
+	return decimal.Decimal2Hexadecimal(s)
 }
 
-// String (n rune) string
-func String(n rune) string {
-	return fmt.Sprintf("%q", n)
+// String (s string) string
+func String(s string) string {
+	return fmt.Sprintf("%q", ValueOf(s))
+}
+
+// ValueOf (s string) int
+func ValueOf(s string) int {
+	r := rune(s[0])
+	return int(r)
 }
 
 // ValueOf (s string) rune

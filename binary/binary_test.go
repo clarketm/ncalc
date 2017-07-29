@@ -17,7 +17,7 @@ import (
 func Example() {
 
 	// BINARY
-	b := 1100100
+	b := "1100100"
 	fmt.Println(binary.Binary2Ascii(b))
 	fmt.Println(binary.Binary2Octal(b))
 	fmt.Println(binary.Binary2Decimal(b))

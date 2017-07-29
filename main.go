@@ -37,7 +37,6 @@ package main
 import (
 	"fmt"
 	"os"
-	"strconv"
 
 	flag "github.com/spf13/pflag"
 
@@ -140,53 +139,9 @@ func init() {
 	}
 }
 
-// main ()
-func main() {
-	flag.Parse()
-
-	if version {
-		printVersion() // version and EXIT
-	}
-
-	if len(flag.Args()) < 1 {
-		flag.Usage() // usage and EXIT
-	}
-
-	arg := parseArg(flag.Args()[0]) // extract arg
-
-	if len(inputFormat) < 1 {
-		println("setDefaultInputFormat")
-		setDefaultInputFormat(arg)
-	}
-
-	// DEBUG
-	// fmt.Println("input", inputFormat)
-	// fmt.Println("output", outputFormat)
-	// fmt.Println("arg", arg)
-
-	println()
-	for _, o := range outputFormat {
-		fn := funcMap[string(inputFormat[0])+"|"+string(o)]
-		checkType(arg)
-		result := utils.Invoke(fn, arg)
-		fmt.Printf("%v: %v\n", bold(o), result)
-	}
-	println()
-
-}
-
 func printVersion() {
 	fmt.Printf("\n%s %v\n", bold("Version:"), VERSION)
 	os.Exit(0)
-}
-
-func parseArg(a string) interface{} {
-	i, err := strconv.Atoi(a)
-	if err != nil {
-		c := rune(a[0])
-		return c
-	}
-	return i
 }
 
 func getFormat(format string) []string {
@@ -211,36 +166,43 @@ func getFormat(format string) []string {
 }
 
 func setDefaultInputFormat(v interface{}) {
-	switch v.(type) {
-	case int:
-		inputFormat = []string{utils.DECIMAL}
-	case int32:
-		inputFormat = []string{utils.ASCII}
+	// switch v.(type) {
+	// case int:
+	inputFormat = []string{utils.DECIMAL}
+	// case int32:
+	// inputFormat = []string{utils.ASCII}
+	// }
+}
+
+// main ()
+func main() {
+	flag.Parse()
+
+	if version {
+		printVersion() // version and EXIT
 	}
-}
 
-func isAscii() bool {
-	f := string(inputFormat[0])
-	return f == utils.ASCII || f == string(utils.ASCII[0])
-}
-
-func isNumeric() bool {
-	f := string(inputFormat[0])
-	return f != utils.ASCII && f != string(utils.ASCII[0])
-}
-
-func checkType(v interface{}) {
-
-	switch v.(type) {
-	case int:
-		if isAscii() {
-			fmt.Fprintln(os.Stderr, "Invalid ascii character", fmt.Sprintf("%d", v.(int)))
-			os.Exit(1)
-		}
-	case int32:
-		if isNumeric() {
-			fmt.Fprintln(os.Stderr, "Invalid integer", fmt.Sprintf("%q", v.(int32)))
-			os.Exit(1)
-		}
+	if len(flag.Args()) < 1 {
+		flag.Usage() // usage and EXIT
 	}
+
+	arg := flag.Args()[0] // extract arg
+
+	if len(inputFormat) < 1 {
+		setDefaultInputFormat(arg)
+	}
+
+	// DEBUG
+	// fmt.Println("input", inputFormat)
+	// fmt.Println("output", outputFormat)
+	// fmt.Println("arg", arg)
+
+	println()
+	for _, o := range outputFormat {
+		fn := funcMap[string(inputFormat[0])+"|"+string(o)]
+		result := utils.Invoke(fn, arg)
+		fmt.Printf("%v: %v\n", bold(o), result)
+	}
+	println()
+
 }

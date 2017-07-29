@@ -14,39 +14,36 @@ import (
 	"github.com/clarketm/ncalc/utils"
 )
 
-// Hexadecimal2Ascii (n int) string
-func Hexadecimal2Ascii(n int) string {
-	s := strconv.Itoa(n)
+// Hexadecimal2Ascii (s string) string
+func Hexadecimal2Ascii(s string) string {
 	return fmt.Sprintf("%q", ValueOf(s))
 }
 
-// Hexadecimal2Binary (n int) string
-func Hexadecimal2Binary(n int) string {
-	s := strconv.Itoa(n)
+// Hexadecimal2Binary (s string) string
+func Hexadecimal2Binary(s string) string {
 	i, err := strconv.ParseInt(s, utils.HEXADECIMAL_BASE, 0)
 	utils.CheckError(err, utils.HEXADECIMAL, utils.BINARY)
-	return decimal.Decimal2Binary(int(i))
+	s = strconv.Itoa(int(i))
+	return decimal.Decimal2Binary(s)
 }
 
-// Hexadecimal2Octal (n int) string
-func Hexadecimal2Octal(n int) string {
-	s := strconv.Itoa(n)
+// Hexadecimal2Octal (s string) string
+func Hexadecimal2Octal(s string) string {
 	i, err := strconv.ParseInt(s, utils.HEXADECIMAL_BASE, 0)
 	utils.CheckError(err, utils.HEXADECIMAL, utils.OCTAL)
-	return decimal.Decimal2Octal(int(i))
+	s = strconv.Itoa(int(i))
+	return decimal.Decimal2Octal(s)
 }
 
-// Hexadecimal2Decimal (n int) string
-func Hexadecimal2Decimal(n int) string {
-	s := strconv.Itoa(n)
+// Hexadecimal2Decimal (s string) string
+func Hexadecimal2Decimal(s string) string {
 	i, err := strconv.ParseInt(s, utils.HEXADECIMAL_BASE, 0)
 	utils.CheckError(err, utils.HEXADECIMAL, utils.DECIMAL)
 	return strconv.Itoa(int(i))
 }
 
-// String (n int) string
-func String(n int) string {
-	s := strconv.Itoa(n)
+// String (s string) string
+func String(s string) string {
 	return fmt.Sprintf("%x", ValueOf(s))
 }
 

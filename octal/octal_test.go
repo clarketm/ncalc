@@ -17,7 +17,7 @@ import (
 func Example() {
 
 	// OCTAL
-	o := 144
+	o := "144"
 	fmt.Println(octal.Octal2Ascii(o))
 	fmt.Println(octal.Octal2Binary(o))
 	fmt.Println(octal.Octal2Decimal(o))

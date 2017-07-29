@@ -17,7 +17,7 @@ import (
 func Example() {
 
 	// DECIMAL
-	d := 100
+	d := "100"
 	fmt.Println(decimal.Decimal2Ascii(d))
 	fmt.Println(decimal.Decimal2Binary(d))
 	fmt.Println(decimal.Decimal2Octal(d))

@@ -14,39 +14,36 @@ import (
 	"github.com/clarketm/ncalc/utils"
 )
 
-// Binary2Ascii (n int) string
-func Binary2Ascii(n int) string {
-	s := strconv.Itoa(n)
+// Binary2Ascii (s string) string
+func Binary2Ascii(s string) string {
 	return fmt.Sprintf("%q", ValueOf(s))
 }
 
-// Binary2Octal (n int) string
-func Binary2Octal(n int) string {
-	s := strconv.Itoa(n)
+// Binary2Octal (s string) string
+func Binary2Octal(s string) string {
 	i, err := strconv.ParseInt(s, utils.BINARY_BASE, 0)
 	utils.CheckError(err, utils.BINARY, utils.OCTAL)
-	return decimal.Decimal2Octal(int(i))
+	s = strconv.Itoa(int(i))
+	return decimal.Decimal2Octal(s)
 }
 
-// Binary2Decimal (n int) string
-func Binary2Decimal(n int) string {
-	s := strconv.Itoa(n)
+// Binary2Decimal (s string) string
+func Binary2Decimal(s string) string {
 	i, err := strconv.ParseInt(s, utils.BINARY_BASE, 0)
 	utils.CheckError(err, utils.BINARY, utils.DECIMAL)
 	return strconv.Itoa(int(i))
 }
 
-// Binary2Hexadecimal (n int) string
-func Binary2Hexadecimal(n int) string {
-	s := strconv.Itoa(n)
+// Binary2Hexadecimal (s string) string
+func Binary2Hexadecimal(s string) string {
 	i, err := strconv.ParseInt(s, utils.BINARY_BASE, 0)
 	utils.CheckError(err, utils.BINARY, utils.HEXADECIMAL)
-	return decimal.Decimal2Hexadecimal(int(i))
+	s = strconv.Itoa(int(i))
+	return decimal.Decimal2Hexadecimal(s)
 }
 
-// String (n int) string
-func String(n int) string {
-	s := strconv.Itoa(n)
+// String (s string) string
+func String(s string) string {
 	return fmt.Sprintf("%b", ValueOf(s))
 }
 

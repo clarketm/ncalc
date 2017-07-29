@@ -16,7 +16,7 @@ import (
 
 func Example() {
 	// ASCII
-	a := 'd'
+	a := "d"
 	fmt.Println(ascii.Ascii2Binary(a))
 	fmt.Println(ascii.Ascii2Octal(a))
 	fmt.Println(ascii.Ascii2Decimal(a))

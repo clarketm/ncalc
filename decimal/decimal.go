@@ -13,32 +13,38 @@ import (
 	"github.com/clarketm/ncalc/utils"
 )
 
-// Decimal2Ascii (n int) string
-func Decimal2Ascii(n int) string {
-	return fmt.Sprintf("%q", n)
+// Decimal2Ascii (s string) string
+func Decimal2Ascii(s string) string {
+	return fmt.Sprintf("%q", ValueOf(s))
 }
 
-// Decimal2Binary (n int) string
-func Decimal2Binary(n int) string {
-	s := strconv.FormatInt(int64(n), utils.BINARY_BASE)
+// Decimal2Binary (s string) string
+func Decimal2Binary(s string) string {
+	i, err := strconv.Atoi(s)
+	utils.CheckError(err, utils.STRING, utils.DECIMAL)
+	s = strconv.FormatInt(int64(i), utils.BINARY_BASE)
 	return s
 }
 
-// Decimal2Octal (n int) string
-func Decimal2Octal(n int) string {
-	s := strconv.FormatInt(int64(n), utils.OCTAL_BASE)
+// Decimal2Octal (s string) string
+func Decimal2Octal(s string) string {
+	i, err := strconv.Atoi(s)
+	utils.CheckError(err, utils.STRING, utils.DECIMAL)
+	s = strconv.FormatInt(int64(i), utils.OCTAL_BASE)
 	return s
 }
 
-// Decimal2Hexadecimal (n int) string
-func Decimal2Hexadecimal(n int) string {
-	s := strconv.FormatInt(int64(n), utils.HEXADECIMAL_BASE)
+// Decimal2Hexadecimal (s string) string
+func Decimal2Hexadecimal(s string) string {
+	i, err := strconv.Atoi(s)
+	utils.CheckError(err, utils.STRING, utils.DECIMAL)
+	s = strconv.FormatInt(int64(i), utils.HEXADECIMAL_BASE)
 	return s
 }
 
-// String (n int) string
-func String(n int) string {
-	return fmt.Sprintf("%d", n)
+// String (s string) string
+func String(s string) string {
+	return fmt.Sprintf("%d", ValueOf(s))
 }
 
 // ValueOf (s string) int
