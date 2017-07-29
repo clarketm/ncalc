@@ -11,10 +11,11 @@ TODO: Manpage
 package main
 
 import (
-	"flag"
 	"fmt"
 	"os"
 	"strconv"
+
+	flag "github.com/spf13/pflag"
 
 	"github.com/clarketm/ncalc/ascii"
 	"github.com/clarketm/ncalc/binary"
@@ -28,27 +29,15 @@ import (
 // VERSION - current version number
 const VERSION = "v1.0.0"
 
-// versionFlag bool
-type versionFlag bool
-
-func (v *versionFlag) IsBoolFlag() bool {
-	return true
-}
-
-func (v *versionFlag) String() string {
-	return fmt.Sprint(*v)
-}
-
-func (v *versionFlag) Set(value string) error {
-	fmt.Printf("\n%s %v\n", bold("Version:"), *v)
-	os.Exit(0)
-	return nil
-}
-
 type inputFlag []string
 
 func (i *inputFlag) String() string {
-	return fmt.Sprint(*i)
+	// return fmt.Sprint(*i)
+	return "decimal|ascii"
+}
+
+func (i *inputFlag) Type() string {
+	return "string"
 }
 
 func (i *inputFlag) Set(value string) error {
@@ -59,7 +48,10 @@ func (i *inputFlag) Set(value string) error {
 type outputFlag []string
 
 func (o *outputFlag) String() string {
-	return fmt.Sprint(*o)
+	return "all"
+}
+func (o *outputFlag) Type() string {
+	return "string"
 }
 
 func (o *outputFlag) Set(value string) error {
@@ -68,7 +60,8 @@ func (o *outputFlag) Set(value string) error {
 }
 
 // Flags
-var version versionFlag
+var version bool
+
 var inputFormat inputFlag
 var outputFormat outputFlag = utils.ALL
 
@@ -106,14 +99,13 @@ var funcMap = map[string]interface{}{
 // init () - initialize command-line flags
 func init() {
 	// -i, --input
-	flag.Var(&inputFormat, "i", "input `format`: (a)scii, (b)inary, (o)ctal, (d)ecimal, (h)exadecimal")
+	flag.VarP(&inputFormat, "input", "i", "input `format`: (a)scii, (b)inary, (o)ctal, (d)ecimal, (h)exadecimal")
 
 	// -o, --output
-	flag.Var(&outputFormat, "o", "output `format`: (a)scii, (b)inary, (o)ctal, (d)ecimal, (h)exadecimal")
+	flag.VarP(&outputFormat, "output", "o", "output `format`: (a)scii, (b)inary, (o)ctal, (d)ecimal, (h)exadecimal")
 
 	// -v, --version
-	flag.Var(&version, "v", "")
-	flag.Var(&version, "version", "print version number")
+	flag.BoolVarP(&version, "version", "v", false, "print version number")
 
 	// Usage
 	flag.Usage = func() {
@@ -129,27 +121,39 @@ func init() {
 func main() {
 	flag.Parse()
 
+	if version {
+		printVersion() // version and EXIT
+	}
+
+	if len(flag.Args()) < 1 {
+		flag.Usage() // usage and EXIT
+	}
+
+	arg := parseArg(flag.Args()[0]) // extract arg
+
+	if len(inputFormat) < 1 {
+		setDefaultInputFormat(arg)
+	}
+
 	// DEBUG
 	// fmt.Println("input", inputFormat)
 	// fmt.Println("output", outputFormat)
-
-	if len(flag.Args()) < 1 {
-		flag.Usage() // usage
-	}
-
-	arg := parseArg(flag.Args()[0])
-
-	// DEBUG
 	// fmt.Println("arg", arg)
 
 	println()
 	for _, o := range outputFormat {
 		fn := funcMap[string(inputFormat[0])+"|"+string(o)]
+		checkType(arg)
 		result := utils.Invoke(fn, arg)
 		fmt.Printf("%v: %v\n", bold(o), result)
 	}
 	println()
 
+}
+
+func printVersion() {
+	fmt.Printf("\n%s %v\n", bold("Version:"), VERSION)
+	os.Exit(0)
 }
 
 func parseArg(a string) interface{} {
@@ -185,4 +189,28 @@ func getFormat(format string) []string {
 		os.Exit(1)
 	}
 	return o
+}
+
+func setDefaultInputFormat(v interface{}) {
+	switch v.(type) {
+	case int:
+		inputFormat = []string{utils.DECIMAL}
+	case int32:
+		inputFormat = []string{utils.ASCII}
+	}
+}
+
+func checkType(v interface{}) {
+	switch v.(type) {
+	case int:
+		if string(inputFormat[0]) == utils.ASCII {
+			fmt.Fprintln(os.Stderr, "Invalid ascii character", fmt.Sprintf("%d", v.(int)))
+			os.Exit(1)
+		}
+	case int32:
+		if string(inputFormat[0]) != utils.ASCII {
+			fmt.Fprintln(os.Stderr, "Invalid integer", fmt.Sprintf("%q", v.(int32)))
+			os.Exit(1)
+		}
+	}
 }
