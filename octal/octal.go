@@ -16,27 +16,28 @@ import (
 
 // Octal2Ascii (n int) string
 func Octal2Ascii(n int) string {
-	return fmt.Sprintf("%q", Octal2Decimal(n))
+	s := strconv.Itoa(n)
+	return fmt.Sprintf("%q", ValueOf(s))
 }
 
 // Octal2Binary (n int) int
-func Octal2Binary(n int) int {
+func Octal2Binary(n int) string {
 	s := strconv.Itoa(n)
 	i, err := strconv.ParseInt(s, utils.OCTAL_BASE, 0)
 	utils.CheckError(err, utils.OCTAL, utils.BINARY)
 	return decimal.Decimal2Binary(int(i))
 }
 
-// Octal2Decimal (n int) int
-func Octal2Decimal(n int) int {
+// Octal2Decimal (n int) string
+func Octal2Decimal(n int) string {
 	s := strconv.Itoa(n)
 	i, err := strconv.ParseInt(s, utils.OCTAL_BASE, 0)
 	utils.CheckError(err, utils.OCTAL, utils.DECIMAL)
-	return int(i)
+	return strconv.Itoa(int(i))
 }
 
-// Octal2Hexadecimal (n int) int
-func Octal2Hexadecimal(n int) int {
+// Octal2Hexadecimal (n int) string
+func Octal2Hexadecimal(n int) string {
 	s := strconv.Itoa(n)
 	i, err := strconv.ParseInt(s, utils.OCTAL_BASE, 0)
 	utils.CheckError(err, utils.OCTAL, utils.HEXADECIMAL)
@@ -45,5 +46,13 @@ func Octal2Hexadecimal(n int) int {
 
 // String (n int) string
 func String(n int) string {
-	return fmt.Sprintf("%o", Octal2Decimal(n))
+	s := strconv.Itoa(n)
+	return fmt.Sprintf("%o", ValueOf(s))
+}
+
+// ValueOf (s string) int
+func ValueOf(s string) int {
+	i, err := strconv.ParseInt(s, utils.OCTAL_BASE, 0)
+	utils.CheckError(err, utils.STRING, utils.OCTAL)
+	return int(i)
 }
