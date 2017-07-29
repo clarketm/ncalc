@@ -6,6 +6,10 @@ const (
 	DECIMAL_BASE     = 10
 	HEXADECIMAL_BASE = 16
 
+	STRING  = "string"
+	INTEGER = "integer"
+
+	ALL         = "all"
 	ASCII       = "ascii"
 	BINARY      = "binary"
 	OCTAL       = "octal"
