@@ -32,7 +32,6 @@ const VERSION = "v1.0.0"
 type inputFlag []string
 
 func (i *inputFlag) String() string {
-	// return fmt.Sprint(*i)
 	return "decimal|ascii"
 }
 
@@ -132,6 +131,7 @@ func main() {
 	arg := parseArg(flag.Args()[0]) // extract arg
 
 	if len(inputFormat) < 1 {
+		println("setDefaultInputFormat")
 		setDefaultInputFormat(arg)
 	}
 
@@ -169,20 +169,15 @@ func getFormat(format string) []string {
 	o := make([]string, 1)
 
 	switch format {
-	case utils.ASCII:
-	case string(utils.ASCII[0]):
+	case utils.ASCII, string(utils.ASCII[0]):
 		o = []string{utils.ASCII}
-	case utils.BINARY:
-	case string(utils.BINARY[0]):
+	case utils.BINARY, string(utils.BINARY[0]):
 		o = []string{utils.BINARY}
-	case utils.OCTAL:
-	case string(utils.OCTAL[0]):
+	case utils.OCTAL, string(utils.OCTAL[0]):
 		o = []string{utils.OCTAL}
-	case utils.DECIMAL:
-	case string(utils.DECIMAL[0]):
+	case utils.DECIMAL, string(utils.DECIMAL[0]):
 		o = []string{utils.DECIMAL}
-	case utils.HEXADECIMAL:
-	case string(utils.HEXADECIMAL[0]):
+	case utils.HEXADECIMAL, string(utils.HEXADECIMAL[0]):
 		o = []string{utils.HEXADECIMAL}
 	default:
 		fmt.Fprintln(os.Stderr, "Unkown format", format)
@@ -200,15 +195,26 @@ func setDefaultInputFormat(v interface{}) {
 	}
 }
 
+func isAscii() bool {
+	f := string(inputFormat[0])
+	return f == utils.ASCII || f == string(utils.ASCII[0])
+}
+
+func isNumeric() bool {
+	f := string(inputFormat[0])
+	return f != utils.ASCII && f != string(utils.ASCII[0])
+}
+
 func checkType(v interface{}) {
+
 	switch v.(type) {
 	case int:
-		if string(inputFormat[0]) == utils.ASCII {
+		if isAscii() {
 			fmt.Fprintln(os.Stderr, "Invalid ascii character", fmt.Sprintf("%d", v.(int)))
 			os.Exit(1)
 		}
 	case int32:
-		if string(inputFormat[0]) != utils.ASCII {
+		if isNumeric() {
 			fmt.Fprintln(os.Stderr, "Invalid integer", fmt.Sprintf("%q", v.(int32)))
 			os.Exit(1)
 		}
