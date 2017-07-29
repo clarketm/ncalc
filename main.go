@@ -67,18 +67,10 @@ func (o *outputFlag) Set(value string) error {
 	return nil
 }
 
-type allFormats []string
-
 // Flags
 var version versionFlag
 var inputFormat inputFlag
-var outputFormat outputFlag = []string{
-	utils.ASCII,
-	utils.BINARY,
-	utils.OCTAL,
-	utils.DECIMAL,
-	utils.HEXADECIMAL,
-}
+var outputFormat outputFlag = utils.ALL
 
 // Globals
 var statusCode int
@@ -188,14 +180,6 @@ func getFormat(format string) []string {
 	case utils.HEXADECIMAL:
 	case string(utils.HEXADECIMAL[0]):
 		o = []string{utils.HEXADECIMAL}
-	case utils.ALL:
-		o = []string{
-			utils.ASCII,
-			utils.BINARY,
-			utils.OCTAL,
-			utils.DECIMAL,
-			utils.HEXADECIMAL,
-		}
 	default:
 		fmt.Fprintln(os.Stderr, "Unkown format", format)
 		os.Exit(1)

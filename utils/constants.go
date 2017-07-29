@@ -9,10 +9,17 @@ const (
 	STRING  = "string"
 	INTEGER = "integer"
 
-	ALL         = "all"
 	ASCII       = "ascii"
 	BINARY      = "binary"
 	OCTAL       = "octal"
 	DECIMAL     = "decimal"
 	HEXADECIMAL = "hexadecimal"
 )
+
+var ALL = []string{
+	ASCII,
+	BINARY,
+	OCTAL,
+	DECIMAL,
+	HEXADECIMAL,
+}
