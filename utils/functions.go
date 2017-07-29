@@ -20,7 +20,7 @@ func Invoke(fn interface{}, args ...interface{}) interface{} {
 // CheckError (err error, formatSrc, formatDst string)
 func CheckError(err error, formatSrc, formatDst string) {
 	if err != nil {
-		fmt.Fprintln(os.Stderr, "There was an error converting", formatSrc, "to", formatDst, ":", err)
+		fmt.Fprintln(os.Stderr, "There was an error converting", formatSrc, "to", formatDst, fmt.Sprintf("\n%v", err))
 		os.Exit(1)
 	}
 }
