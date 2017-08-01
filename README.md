@@ -25,3 +25,18 @@ EXAMPLES:
     ncalc -i decimal -o ascii "15"          # output `decimal` number `15` as `ascii`
     ncalc --input h --output o "ff"         # output `hexadecimal` number `ff` as `octal`
 ```
+### Installation
+#### Source (Mac/Linux)
+#####
+```bash
+$ BUILD=darwin_amd64.tar.gz     # Mac (64 bit)
+$ BUILD=linux_amd64.tar.gz      # Linux (64 bit)
+
+$ curl -O https://github.com/clarketm/ncalc/releases/download/v1.0.0/$BUILD
+$ { BIN_DIR=/usr/local/bin; mkdir -p $BIN_DIR; tar -xzf build/darwin_amd64.tar.gz -C $BIN_DIR; }
+```
+#### Source (Windows)
+* https://github.com/clarketm/ncalc/releases/download/v1.0.0/windows_amd64.zip
+
+#### Golang
+$ go get github.com/clarketm/ncalc
