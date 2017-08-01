@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"os"
 	"reflect"
+	"regexp"
+	"strconv"
 )
 
 // Invoke (fn interface{}, args ...interface{}) interface{}
@@ -20,19 +22,45 @@ func Invoke(fn interface{}, args ...interface{}) interface{} {
 // CheckError (err error, formatSrc, formatDst string)
 func CheckError(err error, formatSrc, formatDst string) {
 	if err != nil {
-		fmt.Fprintln(os.Stderr, "There was an error converting", formatSrc, "to", formatDst, fmt.Sprintf("\n%v", err))
+		if VERBOSE {
+			fmt.Fprintln(os.Stderr, "There was an error converting", formatSrc, "to", formatDst, fmt.Sprintf("\n%v", err))
+		} else {
+			fmt.Fprintln(os.Stderr, "There was an error converting", formatSrc, "to", formatDst)
+		}
 		os.Exit(1)
 	}
 }
 
 // IsAscii (f string) bool
-func IsAscii(f string) bool {
-	return f == ASCII || f == string(ASCII[0])
+func IsAscii(s string) bool {
+	matched, _ := regexp.MatchString("[[:alpha:]]", s)
+	return matched
 }
 
 // IsNumeric (f string) bool
-func IsNumeric(f string) bool {
-	return f != ASCII && f != string(ASCII[0])
+func IsNumeric(s string) bool {
+	var err error
+	if _, err = strconv.ParseInt(s, BINARY_BASE, 0); err == nil {
+		return true
+	}
+	if _, err = strconv.ParseInt(s, OCTAL_BASE, 0); err == nil {
+		return true
+	}
+	if _, err = strconv.ParseInt(s, DECIMAL_BASE, 0); err == nil {
+		return true
+	}
+	if _, err = strconv.ParseInt(s, HEXADECIMAL_BASE, 0); err == nil {
+		return true
+	}
+	return false
+}
+
+// IsDecimal (f string) bool
+func IsDecimal(s string) bool {
+	if _, err := strconv.ParseInt(s, DECIMAL_BASE, 0); err == nil {
+		return true
+	}
+	return false
 }
 
 // CheckType (v interface{}, f string)

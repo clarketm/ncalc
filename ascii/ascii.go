@@ -9,6 +9,7 @@ package ascii
 import (
 	"fmt"
 	"strconv"
+	"unicode/utf8"
 
 	"github.com/clarketm/ncalc/decimal"
 )
@@ -44,7 +45,8 @@ func String(s string) string {
 
 // ValueOf (s string) int
 func ValueOf(s string) int {
-	r := rune(s[0])
+	s, _ = strconv.Unquote(`"` + s + `"`)
+	r, _ := utf8.DecodeRuneInString(s)
 	return int(r)
 }
 

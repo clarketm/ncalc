@@ -6,6 +6,8 @@ const (
 	DECIMAL_BASE     = 10
 	HEXADECIMAL_BASE = 16
 
+	VERBOSE = false
+
 	STRING  = "string"
 	INTEGER = "integer"
 

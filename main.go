@@ -179,12 +179,11 @@ func getFormat(format string) []string {
 }
 
 func setDefaultInputFormat(v interface{}) {
-	// switch v.(type) {
-	// case int:
-	inputFormat = []string{utils.DECIMAL}
-	// case int32:
-	// inputFormat = []string{utils.ASCII}
-	// }
+	if utils.IsDecimal(v.(string)) {
+		inputFormat = []string{utils.DECIMAL}
+	} else {
+		inputFormat = []string{utils.ASCII}
+	}
 }
 
 // main ()
