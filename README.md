@@ -39,4 +39,6 @@ $ { BIN_DIR=/usr/local/bin; mkdir -p $BIN_DIR; tar -xzf build/$BUILD -C $BIN_DIR
 * https://github.com/clarketm/ncalc/releases/download/v1.0.0/windows_amd64.zip
 
 #### Golang
+```shell
 $ go get github.com/clarketm/ncalc
+```
