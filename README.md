@@ -28,7 +28,7 @@ EXAMPLES:
 ### Installation
 #### Source (Mac/Linux)
 #####
-```bash
+```shell
 $ BUILD=darwin_amd64.tar.gz     # Mac (64 bit)
 $ BUILD=linux_amd64.tar.gz      # Linux (64 bit)
 
