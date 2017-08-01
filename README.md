@@ -31,11 +31,12 @@ EXAMPLES:
 ```shell
 # List of builds: https://github.com/clarketm/ncalc/releases
 $ BUILD=darwin_amd64.tar.gz     # Mac (64 bit)
-$ BUILD=linux_amd64.tar.gz      # Linux (64 bit)
+# BUILD=linux_amd64.tar.gz      # Linux (64 bit)
 
 $ BIN_DIR=/usr/local/bin        # `bin` install directory
 $ mkdir -p $BIN_DIR     
-$ curl -L https://github.com/clarketm/ncalc/releases/download/v1.0.0/$BUILD | tar xz -C $BIN_DIR
+
+$ curl -L https://github.com/clarketm/ncalc/releases/download/v1.0.0/$BUILD | tar xz -C $BIN_DIR        # install
 ```
 #### Source (Windows)
 * https://github.com/clarketm/ncalc/releases/download/v1.0.0/windows_amd64.zip
