@@ -41,6 +41,12 @@ $ curl -L https://github.com/clarketm/ncalc/releases/download/v1.0.0/$BUILD | ta
 #### Source (Windows)
 * https://github.com/clarketm/ncalc/releases/download/v1.0.0/windows_amd64.zip
 
+#### Install script
+```shell
+$ git clone "https://github.com/clarketm/ncalc.git"
+$ cd ncalc && sh install.sh
+```
+
 #### Golang
 ```shell
 $ go get github.com/clarketm/ncalc
