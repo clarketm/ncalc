@@ -121,10 +121,10 @@ var funcMap = map[string]interface{}{
 // init () - initialize command-line flags
 func init() {
 	// -i, --input
-	flag.VarP(&inputFormat, "input", "i", "input `format`: (a)scii, (b)inary, (o)ctal, (d)ecimal, (h)exadecimal")
+	flag.VarP(&inputFormat, "input", "i", "input `format`: see FORMATS.")
 
 	// -o, --output
-	flag.VarP(&outputFormat, "output", "o", "output `format`: (a)scii, (b)inary, (o)ctal, (d)ecimal, (h)exadecimal")
+	flag.VarP(&outputFormat, "output", "o", "output `format`: see FORMATS.")
 
 	// -v, --version
 	flag.BoolVarP(&version, "version", "v", false, "print version number")
@@ -132,8 +132,21 @@ func init() {
 	// Usage
 	flag.Usage = func() {
 		println()
-		fmt.Fprintf(os.Stdout, "Usage of %s:\n", os.Args[0])
+		fmt.Printf("NAME:\n")
+		fmt.Printf("\tncalc – number base converter.\n")
+		println()
+		fmt.Printf("SYNOPSIS:\n")
+		fmt.Printf("\t%v [ opts... ] [ number|character ]\n", bold("ncalc"))
+		println()
+		fmt.Printf("OPTIONS:\n")
 		flag.PrintDefaults()
+		println()
+		fmt.Printf("FORMATS:\n")
+		fmt.Printf("\t(a)scii      \tcharacter\n")
+		fmt.Printf("\t(b)inary     \tbase 2\n")
+		fmt.Printf("\t(o)ctal      \tbase 8\n")
+		fmt.Printf("\t(d)ecimal    \tbase 10\n")
+		fmt.Printf("\t(h)exadecimal\tbase 16\n")
 		println()
 		os.Exit(statusCode)
 	}
