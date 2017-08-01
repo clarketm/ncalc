@@ -25,9 +25,8 @@ EXAMPLES:
     ncalc -i decimal -o ascii "15"          # output `decimal` number `15` as `ascii`
     ncalc --input h --output o "ff"         # output `hexadecimal` number `ff` as `octal`
 ```
-### Installation
+## Installation
 #### Source (Mac/Linux)
-#####
 ```shell
 # List of builds: https://github.com/clarketm/ncalc/releases/
 
