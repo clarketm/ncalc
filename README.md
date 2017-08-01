@@ -30,6 +30,7 @@ EXAMPLES:
 #####
 ```shell
 # List of builds: https://github.com/clarketm/ncalc/releases/
+
 $ BUILD=darwin_amd64.tar.gz     # Mac (64 bit)
 # BUILD=linux_amd64.tar.gz      # Linux (64 bit)
 
