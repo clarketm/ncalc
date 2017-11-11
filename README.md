@@ -61,7 +61,7 @@ $ curl -L https://github.com/clarketm/ncalc/releases/download/v1.0.0/$BUILD | ta
 
 ## Documentation
 
-You can see the full reference documentation for the **ncalc** package at [godoc.org][https://godoc.org/github.com/clarketm/pflag], or through go's standard documentation system:
+You can see the full reference documentation for the **ncalc** package at [godoc.org](https://godoc.org/github.com/clarketm/ncalc), or through go's standard documentation system:
 ```bash
 $ godoc -http=:6060
 
