@@ -1,7 +1,6 @@
 # ncalc
-Number base converter.
-
 ```shell
+    
 NAME:
     ncalc – number base converter.
 
@@ -27,6 +26,7 @@ EXAMPLES:
     ncalc -i a "f"                          # output `ascii` character `f` in `all` formats
     ncalc -i decimal -o ascii "15"          # output `decimal` number `15` as `ascii`
     ncalc --input h --output o "ff"         # output `hexadecimal` number `ff` as `octal`
+    
 ```
 ## Installation
 
