@@ -1,4 +1,5 @@
-# ncalc
+# [ncalc](https://godoc.org/github.com/clarketm/ncalc)
+
 ```shell
     
 NAME:
@@ -56,3 +57,13 @@ $ curl -L https://github.com/clarketm/ncalc/releases/download/v1.0.0/$BUILD | ta
 
 #### Source (Windows)
 * https://github.com/clarketm/ncalc/releases/download/v1.0.0/windows_amd64.zip
+
+
+## Documentation
+
+You can see the full reference documentation for the **ncalc** package at [godoc.org][https://godoc.org/github.com/clarketm/pflag], or through go's standard documentation system:
+```bash
+$ godoc -http=:6060
+
+open browser to: "http://localhost:6060/pkg/github.com/clarketm/ncalc" 
+```
