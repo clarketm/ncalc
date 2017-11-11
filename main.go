@@ -38,7 +38,7 @@ import (
 	"fmt"
 	"os"
 
-	flag "github.com/spf13/pflag"
+	flag "github.com/clarketm/pflag"
 
 	"github.com/clarketm/ncalc/ascii"
 	"github.com/clarketm/ncalc/binary"
@@ -50,7 +50,7 @@ import (
 )
 
 // VERSION - current version number
-const VERSION = "v1.0.0"
+const VERSION = "v1.0.1"
 
 type inputFlag []string
 
