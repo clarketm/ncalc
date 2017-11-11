@@ -1,5 +1,5 @@
 # [ncalc](https://godoc.org/github.com/clarketm/ncalc)
-Command line utility for quick number base conversions ( ascii / binary / octal / decimal / hexadecimal )
+Command line utility for *quick* number base conversions ( **ascii** / **binary** / **octal** / **decimal** / **hexadecimal** )
 
 ```shell
     
