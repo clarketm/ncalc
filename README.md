@@ -1,3 +1,6 @@
+# ncalc
+Number base converter.
+
 ```shell
 NAME:
     ncalc – number base converter.
@@ -26,6 +29,18 @@ EXAMPLES:
     ncalc --input h --output o "ff"         # output `hexadecimal` number `ff` as `octal`
 ```
 ## Installation
+
+#### Golang
+```shell
+$ go get github.com/clarketm/ncalc
+```
+
+#### Install script
+```shell
+$ git clone "https://github.com/clarketm/ncalc.git"
+$ cd ncalc && sh install.sh
+```
+
 #### Source (Mac/Linux)
 ```shell
 # List of builds: https://github.com/clarketm/ncalc/releases/
@@ -38,16 +53,6 @@ $ mkdir -p $BIN_DIR
 
 $ curl -L https://github.com/clarketm/ncalc/releases/download/v1.0.0/$BUILD | tar xz -C $BIN_DIR        # install
 ```
+
 #### Source (Windows)
 * https://github.com/clarketm/ncalc/releases/download/v1.0.0/windows_amd64.zip
-
-#### Install script
-```shell
-$ git clone "https://github.com/clarketm/ncalc.git"
-$ cd ncalc && sh install.sh
-```
-
-#### Golang
-```shell
-$ go get github.com/clarketm/ncalc
-```
