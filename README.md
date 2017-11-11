@@ -65,5 +65,5 @@ You can see the full reference documentation for the **ncalc** package at [godoc
 ```bash
 $ godoc -http=:6060
 
-open browser to: "http://localhost:6060/pkg/github.com/clarketm/ncalc" 
+# Open browser to: "http://localhost:6060/pkg/github.com/clarketm/ncalc" 
 ```
