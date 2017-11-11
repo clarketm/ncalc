@@ -59,7 +59,7 @@ $ curl -L https://github.com/clarketm/ncalc/releases/download/v1.0.0/$BUILD | ta
 * https://github.com/clarketm/ncalc/releases/download/v1.0.0/windows_amd64.zip
 
 
-## Documentation
+## Usage
 
 You can see the full reference documentation for the **ncalc** package at [godoc.org](https://godoc.org/github.com/clarketm/ncalc), or through go's standard documentation system:
 ```bash
