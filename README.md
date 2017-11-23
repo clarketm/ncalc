@@ -34,7 +34,7 @@ EXAMPLES:
 
 #### Golang
 ```shell
-$ go get github.com/clarketm/ncalc
+$ go get -u github.com/clarketm/ncalc
 ```
 
 #### Install script
