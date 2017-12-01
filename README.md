@@ -40,7 +40,7 @@ $ go get -u github.com/clarketm/ncalc
 #### Install script
 ```shell
 $ git clone "https://github.com/clarketm/ncalc.git"
-$ cd ncalc && sh install.sh
+$ cd ncalc && sudo sh install.sh
 ```
 
 #### Source (Mac/Linux)
@@ -53,11 +53,11 @@ $ BUILD=darwin_amd64.tar.gz     # Mac (64 bit)
 $ BIN_DIR=/usr/local/bin        # `bin` install directory
 $ mkdir -p $BIN_DIR     
 
-$ curl -L https://github.com/clarketm/ncalc/releases/download/v1.0.1/$BUILD | tar xz -C $BIN_DIR        # install
+$ curl -L https://github.com/clarketm/ncalc/releases/download/v1.0.2/$BUILD | tar xz -C $BIN_DIR        # install
 ```
 
 #### Source (Windows)
-* https://github.com/clarketm/ncalc/releases/download/v1.0.1/windows_amd64.zip
+* https://github.com/clarketm/ncalc/releases/download/v1.0.2/windows_amd64.zip
 
 
 ## Usage

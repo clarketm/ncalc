@@ -50,7 +50,7 @@ import (
 )
 
 // VERSION - current version number
-const VERSION = "v1.0.1"
+const VERSION = "v1.0.2"
 
 type inputFlag []string
 
