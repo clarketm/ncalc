@@ -37,7 +37,7 @@ case "$ARCH" in
     BUILD_DIR="${BUILD_DIR}_${AMD64}"
   ;;
   i386*|386*)
-    BUILD_DIR="${BUILD_DIR}+${I386}"
+    BUILD_DIR="${BUILD_DIR}_${I386}"
   ;;
   arm*)
     BUILD_DIR="${BUILD_DIR}_${ARM}"
@@ -67,9 +67,8 @@ copy_script () {
 if ! type "$SCRIPT" > /dev/null 2>&1; then
   copy_script
 else
-  read -r -n1 -p "$SCRIPT already exists on your PATH. Do you still want to install? [N/y] "
-  echo
-  if [ "$REPLY" == 'y' ] || [ "$REPLY" == 'Y' ]; then
+  read -r -p "$SCRIPT already exists on your PATH. Do you still want to install? [N/y] " REPLY
+  if [ "$REPLY" = 'y' ] || [ "$REPLY" = 'Y' ]; then
     copy_script
   else
     echo "setup aborted" >&2
