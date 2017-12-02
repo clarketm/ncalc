@@ -209,11 +209,6 @@ func main() {
 		setDefaultInputFormat(arg)
 	}
 
-	// DEBUG
-	// fmt.Println("input", inputFormat)
-	// fmt.Println("output", outputFormat)
-	// fmt.Println("arg", arg)
-
 	buffer := bufio.NewWriter(os.Stdout)
 	defer buffer.Flush()
 	for _, o := range outputFormat {
