@@ -1,8 +1,12 @@
 # [ncalc](https://godoc.org/github.com/clarketm/ncalc)
+
 Command line utility for *quick* number base conversions ( **ascii** / **binary** / **octal** / **decimal** / **hexadecimal** ).
 
+![release-badge](https://img.shields.io/github/release/clarketm/ncalc.svg)
+![circleci-badge](https://circleci.com/gh/clarketm/ncalc.svg?style=shield&circle-token=51853e44a4aff2fef83b0b89407ed15288bd641c)
+
 ```shell
-    
+
 NAME:
     ncalc – number base converter.
 
@@ -28,7 +32,7 @@ EXAMPLES:
     ncalc -i a "f"                          # output `ascii` character `f` in `all` formats
     ncalc -i decimal -o ascii "15"          # output `decimal` number `15` as `ascii`
     ncalc --input h --output o "ff"         # output `hexadecimal` number `ff` as `octal`
-    
+
 ```
 ## Installation
 
@@ -51,7 +55,7 @@ $ BUILD=darwin_amd64.tar.gz     # Mac (64 bit)
 # BUILD=linux_amd64.tar.gz      # Linux (64 bit)
 
 $ BIN_DIR=/usr/local/bin        # `bin` install directory
-$ mkdir -p $BIN_DIR     
+$ mkdir -p $BIN_DIR
 
 $ curl -L https://github.com/clarketm/ncalc/releases/download/v1.1.2/$BUILD | tar xz -C $BIN_DIR        # install
 ```
