@@ -23,9 +23,10 @@ func Example() {
 	fmt.Println(ascii.Ascii2Hexadecimal(a))
 	fmt.Printf("%v:%T", ascii.String(a), ascii.String(a))
 
+	// Output:
 	// 1100100
 	// 144
 	// 100
 	// 64
-	// d:string
+	// 'd':string
 }
