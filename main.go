@@ -35,6 +35,7 @@ EXAMPLES:
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"os"
 
@@ -50,7 +51,7 @@ import (
 )
 
 // VERSION - current version number
-const VERSION = "v1.0.2"
+const VERSION = "v1.1.2"
 
 type inputFlag []string
 
@@ -83,6 +84,7 @@ func (o *outputFlag) Set(value string) error {
 
 // Flags
 var version bool
+var quiet bool
 
 var inputFormat inputFlag
 var outputFormat outputFlag = utils.ALL
@@ -120,6 +122,9 @@ var funcMap = map[string]interface{}{
 
 // init () - initialize command-line flags
 func init() {
+	// -q, --quiet
+	flag.BoolVarP(&quiet, "quiet", "q", false, "suppress printing of output format type(s)")
+
 	// -i, --input
 	flag.VarP(&inputFormat, "input", "i", "input `format`: see FORMATS.")
 
@@ -204,17 +209,15 @@ func main() {
 		setDefaultInputFormat(arg)
 	}
 
-	// DEBUG
-	// fmt.Println("input", inputFormat)
-	// fmt.Println("output", outputFormat)
-	// fmt.Println("arg", arg)
-
-	println()
+	buffer := bufio.NewWriter(os.Stdout)
+	defer buffer.Flush()
 	for _, o := range outputFormat {
 		fn := funcMap[string(inputFormat[0])+"|"+string(o)]
 		result := utils.Invoke(fn, arg)
-		fmt.Printf("%v: %v\n", bold(o), result)
+		if !quiet {
+			fmt.Fprintf(buffer, "%v: %v\n", bold(o), result)
+		} else {
+			fmt.Fprintf(buffer, "%v\n", result)
+		}
 	}
-	println()
-
 }
