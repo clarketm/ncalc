@@ -17,6 +17,7 @@ OPTIONS:
     -h, --help                  print usage.
     -i, --input format          input format. see FORMATS. (default: decimal|ascii)
     -o, --output format         output format. see FORMATS. (default: all)
+    -q, --quiet                 suppress printing of output format type(s)
     -v, --version               print version number.
 
 FORMATS:
