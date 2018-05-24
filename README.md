@@ -67,9 +67,8 @@ $ curl -L https://github.com/clarketm/ncalc/releases/download/v1.1.2/$BUILD | ta
 
 ## Usage
 
+#### Convert `ascii` to `decimal`
 ```shell
-# Convert `ascii` to `decimal`
-
 # Short form
 $ ncalc -i a -o d 'w'
 
@@ -94,25 +93,22 @@ $ ncalc -- -i ascii --output decimal 'w'
 119
 ```
 
+#### Convert `decimal` to `binary`
 ```shell
-# Convert `decimal` to `binary`
-
 $ ncalc -i decimal -o binary 170
 
 binary: 10101010
 ```
 
+#### Convert `binary` to `decimal`
 ```shell
-# Convert `binary` to `decimal`
-
 $ ncalc -i b -o d 10101010
 
 decimal: 170
 ```
 
+#### Convert `ascii` to `all` formats
 ```shell
-# Convert `ascii` to `all` formats
-
 $ ncalc -i a 'G'
 
 ascii: 'G'
