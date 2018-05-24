@@ -74,15 +74,18 @@ $ ncalc -i a -o d 'w'
 
 decimal: 119
 
+
 # Long form
 $ ncalc -i ascii -o decimal 'w'
 
 decimal: 119
 
+
 # Very long form
 $ ncalc --input ascii --output decimal 'w'
 
 decimal: 119
+
 
 # Quite mode (-q|--quiet)
 $ ncalc -- -i ascii --output decimal 'w'
@@ -92,6 +95,7 @@ $ ncalc -- -i ascii --output decimal 'w'
 
 ```shell
 # Convert `decimal` to `binary`
+
 $ ncalc -i decimal -o binary 170
 
 binary: 10101010
@@ -99,6 +103,7 @@ binary: 10101010
 
 ```shell
 # Convert `binary` to `decimal`
+
 $ ncalc -i b -o d 10101010
 
 decimal: 170
@@ -106,6 +111,7 @@ decimal: 170
 
 ```shell
 # Convert `ascii` to `all` formats
+
 $ ncalc -i a 'G'
 
 ascii: 'G'
