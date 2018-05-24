@@ -68,7 +68,7 @@ $ curl -L https://github.com/clarketm/ncalc/releases/download/v1.1.2/$BUILD | ta
 ## Usage
 
 #### Convert `ascii` to `decimal`
-```shell
+```bash
 # Short form
 $ ncalc -i a -o d 'w'
 
@@ -117,6 +117,8 @@ octal: 107
 decimal: 71
 hexadecimal: 47
 ```
+
+---
 
 You can see the full reference documentation for the **ncalc** package at [godoc.org](https://godoc.org/github.com/clarketm/ncalc), or through go's standard documentation system:
 ```bash
