@@ -66,6 +66,55 @@ $ curl -L https://github.com/clarketm/ncalc/releases/download/v1.1.2/$BUILD | ta
 
 ## Usage
 
+```shell
+# Convert `ascii` to `decimal`
+
+# Short form
+$ ncalc -i a -o d 'w'
+
+decimal: 119
+
+# Long form
+$ ncalc -i ascii -o decimal 'w'
+
+decimal: 119
+
+# Very long form
+$ ncalc --input ascii --output decimal 'w'
+
+decimal: 119
+
+# Quite mode (-q|--quiet)
+$ ncalc -- -i ascii --output decimal 'w'
+
+119
+```
+
+```shell
+# Convert `decimal` to `binary`
+$ ncalc -i decimal -o binary 170
+
+binary: 10101010
+```
+
+```shell
+# Convert `binary` to `decimal`
+$ ncalc -i b -o d 10101010
+
+decimal: 170
+```
+
+```shell
+# Convert `ascii` to `all` formats
+$ ncalc -i a 'G'
+
+ascii: 'G'
+binary: 1000111
+octal: 107
+decimal: 71
+hexadecimal: 47
+```
+
 You can see the full reference documentation for the **ncalc** package at [godoc.org](https://godoc.org/github.com/clarketm/ncalc), or through go's standard documentation system:
 ```bash
 $ godoc -http=:6060
