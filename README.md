@@ -2,8 +2,8 @@
 
 Command line utility for *quick* number base conversions ( **ascii** / **binary** / **octal** / **decimal** / **hexadecimal** ).
 
-![release-badge](https://img.shields.io/github/release/clarketm/ncalc.svg)
-![circleci-badge](https://circleci.com/gh/clarketm/ncalc.svg?style=shield)
+[![release-badge](https://img.shields.io/github/release/clarketm/ncalc.svg)](https://github.com/clarketm/ncalc/releases)
+[![circleci-badge](https://circleci.com/gh/clarketm/ncalc.svg?style=shield)](https://circleci.com/gh/clarketm/ncalc)
 
 ```shell
 
