@@ -3,7 +3,7 @@
 Command line utility for *quick* number base conversions ( **ascii** / **binary** / **octal** / **decimal** / **hexadecimal** ).
 
 ![release-badge](https://img.shields.io/github/release/clarketm/ncalc.svg)
-![circleci-badge](https://circleci.com/gh/clarketm/ncalc.svg?style=shield&circle-token=51853e44a4aff2fef83b0b89407ed15288bd641c)
+![circleci-badge](https://circleci.com/gh/clarketm/ncalc.svg?style=shield)
 
 ```shell
 
