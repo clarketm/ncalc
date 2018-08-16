@@ -21,7 +21,7 @@ func Hexadecimal2Ascii(s string) string {
 
 // Hexadecimal2Binary (s string) string
 func Hexadecimal2Binary(s string) string {
-	i, err := strconv.ParseInt(s, utils.HEXADECIMAL_BASE, 0)
+	i, err := utils.Parse(s, utils.HEXADECIMAL_BASE)
 	utils.CheckError(err, utils.HEXADECIMAL, utils.BINARY)
 	s = strconv.Itoa(int(i))
 	return decimal.Decimal2Binary(s)
@@ -29,7 +29,7 @@ func Hexadecimal2Binary(s string) string {
 
 // Hexadecimal2Octal (s string) string
 func Hexadecimal2Octal(s string) string {
-	i, err := strconv.ParseInt(s, utils.HEXADECIMAL_BASE, 0)
+	i, err := utils.Parse(s, utils.HEXADECIMAL_BASE)
 	utils.CheckError(err, utils.HEXADECIMAL, utils.OCTAL)
 	s = strconv.Itoa(int(i))
 	return decimal.Decimal2Octal(s)
@@ -37,7 +37,7 @@ func Hexadecimal2Octal(s string) string {
 
 // Hexadecimal2Decimal (s string) string
 func Hexadecimal2Decimal(s string) string {
-	i, err := strconv.ParseInt(s, utils.HEXADECIMAL_BASE, 0)
+	i, err := utils.Parse(s, utils.HEXADECIMAL_BASE)
 	utils.CheckError(err, utils.HEXADECIMAL, utils.DECIMAL)
 	return strconv.Itoa(int(i))
 }
@@ -49,7 +49,7 @@ func String(s string) string {
 
 // ValueOf (s string) int
 func ValueOf(s string) int {
-	i, err := strconv.ParseInt(s, utils.HEXADECIMAL_BASE, 0)
+	i, err := utils.Parse(s, utils.HEXADECIMAL_BASE)
 	utils.CheckError(err, utils.STRING, utils.HEXADECIMAL)
 	return int(i)
 }

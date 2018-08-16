@@ -40,6 +40,12 @@ func IsAscii(s string) bool {
 // IsNumeric (f string) bool
 func IsNumeric(s string) bool {
 	var err error
+	if _, err = strconv.ParseFloat(s, 0); err == nil {
+		return true
+	}
+	if _, err = strconv.ParseInt(s, 0, 0); err == nil {
+		return true
+	}
 	if _, err = strconv.ParseInt(s, BINARY_BASE, 0); err == nil {
 		return true
 	}
@@ -61,6 +67,22 @@ func IsDecimal(s string) bool {
 		return true
 	}
 	return false
+}
+
+// IsLiteral (s string) bool
+func IsLiteral(s string) bool {
+	var octalLiteral = regexp.MustCompile(`^0[0-7]+$`)
+	var hexLiteral = regexp.MustCompile(`^0[xX][0-9a-zA-Z]+$`)
+	return octalLiteral.MatchString(s) || hexLiteral.MatchString(s)
+}
+
+// Parse (s string, base int) (int64, error)
+func Parse(s string, base int) (int64, error) {
+	if IsLiteral(s) {
+		return strconv.ParseInt(s, 0, 0)
+	} else {
+		return strconv.ParseInt(s, base, 0)
+	}
 }
 
 // CheckType (v interface{}, f string)

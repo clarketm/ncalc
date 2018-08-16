@@ -45,6 +45,9 @@ func String(s string) string {
 
 // ValueOf (s string) int
 func ValueOf(s string) int {
+	// if utils.IsLiteral(s) {
+	// 	ss, _ := strconv.ParseInt(s, 0, 0)
+	// }
 	s, _ = strconv.Unquote(`"` + s + `"`)
 	r, _ := utf8.DecodeRuneInString(s)
 	return int(r)

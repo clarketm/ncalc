@@ -20,7 +20,7 @@ func Decimal2Ascii(s string) string {
 
 // Decimal2Binary (s string) string
 func Decimal2Binary(s string) string {
-	i, err := strconv.Atoi(s)
+	i, err := utils.Parse(s, utils.DECIMAL_BASE)
 	utils.CheckError(err, utils.STRING, utils.DECIMAL)
 	s = strconv.FormatInt(int64(i), utils.BINARY_BASE)
 	return s
@@ -28,7 +28,7 @@ func Decimal2Binary(s string) string {
 
 // Decimal2Octal (s string) string
 func Decimal2Octal(s string) string {
-	i, err := strconv.Atoi(s)
+	i, err := utils.Parse(s, utils.DECIMAL_BASE)
 	utils.CheckError(err, utils.STRING, utils.DECIMAL)
 	s = strconv.FormatInt(int64(i), utils.OCTAL_BASE)
 	return s
@@ -36,7 +36,7 @@ func Decimal2Octal(s string) string {
 
 // Decimal2Hexadecimal (s string) string
 func Decimal2Hexadecimal(s string) string {
-	i, err := strconv.Atoi(s)
+	i, err := utils.Parse(s, utils.DECIMAL_BASE)
 	utils.CheckError(err, utils.STRING, utils.DECIMAL)
 	s = strconv.FormatInt(int64(i), utils.HEXADECIMAL_BASE)
 	return s
@@ -49,7 +49,7 @@ func String(s string) string {
 
 // ValueOf (s string) int
 func ValueOf(s string) int {
-	i, err := strconv.Atoi(s)
+	i, err := utils.Parse(s, utils.DECIMAL_BASE)
 	utils.CheckError(err, utils.STRING, utils.DECIMAL)
 	return int(i)
 }

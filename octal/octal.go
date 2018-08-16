@@ -21,7 +21,7 @@ func Octal2Ascii(s string) string {
 
 // Octal2Binary (s string) string
 func Octal2Binary(s string) string {
-	i, err := strconv.ParseInt(s, utils.OCTAL_BASE, 0)
+	i, err := utils.Parse(s, utils.OCTAL_BASE)
 	utils.CheckError(err, utils.OCTAL, utils.BINARY)
 	s = strconv.Itoa(int(i))
 	return decimal.Decimal2Binary(s)
@@ -29,14 +29,14 @@ func Octal2Binary(s string) string {
 
 // Octal2Decimal (s string) string
 func Octal2Decimal(s string) string {
-	i, err := strconv.ParseInt(s, utils.OCTAL_BASE, 0)
+	i, err := utils.Parse(s, utils.OCTAL_BASE)
 	utils.CheckError(err, utils.OCTAL, utils.DECIMAL)
 	return strconv.Itoa(int(i))
 }
 
 // Octal2Hexadecimal (s string) string
 func Octal2Hexadecimal(s string) string {
-	i, err := strconv.ParseInt(s, utils.OCTAL_BASE, 0)
+	i, err := utils.Parse(s, utils.OCTAL_BASE)
 	utils.CheckError(err, utils.OCTAL, utils.HEXADECIMAL)
 	s = strconv.Itoa(int(i))
 	return decimal.Decimal2Hexadecimal(s)
@@ -49,7 +49,7 @@ func String(s string) string {
 
 // ValueOf (s string) int
 func ValueOf(s string) int {
-	i, err := strconv.ParseInt(s, utils.OCTAL_BASE, 0)
+	i, err := utils.Parse(s, utils.OCTAL_BASE)
 	utils.CheckError(err, utils.STRING, utils.OCTAL)
 	return int(i)
 }
