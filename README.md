@@ -88,7 +88,7 @@ decimal: 119
 
 
 # Quite mode (-q|--quiet)
-$ ncalc -- -i ascii --output decimal 'w'
+$ ncalc -q -i ascii --output decimal 'w'
 
 119
 ```
